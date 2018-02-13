@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="john" name="jon johnny,jonathan;jim" class="java.lang.String" />
+    <alias name="john" alias="ion" />
+    
+    <bean name="customEditorConfigurer" 
+          class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="chapter4.FullName" 
+                       value="chapter4.NamePropertyEditor" />
+            </map>            
+        </property>
+    </bean>
+    
+    <bean id="exampleBean" class="chapter4.CustomEditorExample" 
+          p:name="John Mayer" />
+    
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-shared-configuration>
+    <!--
+This file contains additional configuration written by modules in the NetBeans IDE.
+The configuration is intended to be shared among all the users of project and
+therefore it is assumed to be part of version control checkout.
+Without this configuration present, some functionality in the IDE may be limited or fail altogether.
+-->
+    <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
+        <config-files>
+            <config-file>src/main/resources/spring/xml-bean-factory-config.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-annotation.xml</config-file>
+            <config-file>src/main/resources/spring/parent-context.xml</config-file>
+            <config-file>src/main/resources/spring/child-context.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-01.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-02.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-03.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-04.xml</config-file>
+            <config-file>src/main/resources/spring/highschool-config.xml</config-file>
+            <config-file>src/main/resources/spring/kindergarden-config.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml2.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml3.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml-01.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml-02.xml</config-file>
+            <config-file>src/main/resources/spring/app-context-xml4.xml</config-file>
+        </config-files>
+        <config-file-groups/>
+    </spring-data>
+</project-shared-configuration>

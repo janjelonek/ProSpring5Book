@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd"
+    default-lazy-init="true">
+        
+    <bean id="provider" class="chapter3.ConfigurableMessageProvider"
+          c:message="I hope that someone gets my message in a bottle." />
+    
+    <bean id="constructorConfusion" class="chapter3.ConstructorConfusion">
+        <constructor-arg type="int">
+            <value>90</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="renderer" class="hello.world.StandardOutMessageRenderer" 
+          p:messageProvider-ref="provider"/>
+    
+    <bean id="injectSimpleConfig" class="chapter3.InjectSimple" />
+    
+    <bean id="injectSimpleSpel" class="chapter3.InjectSimple" 
+        p:name="John Mayer"
+        p:age="39"
+        p:height="1.92"
+        p:programmer="false"
+        p:ageInSeconds="1241401112" />
+    
+    <bean id="oracle" name="wiseworm" class="chapter3.BookwormOracle" />
+    
+    <bean id="injectRef" class="chapter3.InjectRef">
+        <property name="oracle">
+            <ref bean="wiseworm" />
+        </property>
+    </bean>
+    
+    <bean id="lyricHolder" class="chapter3.LyricHolder" />
+    
+    <bean id="injectCollection" class="chapter3.CollectionInjection">
+        <property name="map">
+            <map>
+                <entry key="someValue">
+                    <value>It's a Friday, we finally made it</value>
+                </entry>
+                <entry key="someBean">
+                    <ref bean="lyricHolder" />
+                </entry>
+            </map>
+        </property>
+        <property name="props">
+            <props>
+                <prop key="firstName">John</prop>
+                <prop key="secondName">Mayer</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set>
+                <value>I can't believe I get to see your face</value>
+                <ref bean="lyricHolder" />
+            </set>
+        </property>
+        <property name="list">
+            <list>
+                <value>You've been working and I've been waiting</value>
+                <ref bean="lyricHolder" />
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="singer" class="chapter3.Singer" scope="prototype" />
+    
+    <bean id="abstractLookupBean" class="chapter3.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger" bean="singer" />
+    </bean>
+    
+    <bean id="standardLookupBean" class="chapter3.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer" />
+    </bean>
+    
+    <bean id="methodReplacer" class="chapter3.FormatMessageReplacer" />
+    
+    <bean id="replacementTarget" class="chapter3.ReplacementTarget">
+        <replaced-method name="formatMessage" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+    
+    <bean id="standardTarget" class="chapter3.ReplacementTarget" />
+    
+    <bean id="nonSingleton" class="chapter3.annotation.Singer"
+          scope="prototype" c:_0="John Mayer" />
+    
+    <bean id="parent" class="chapter3.Singer" p:name="John Mayer" p:age="39"/>
+    <bean id="child" class="chapter3.Singer" parent="parent" p:age="0" />
+    
+    <bean id="singerOne" class="chapter4.SingerWithInterface"
+          p:name="John Mayer" p:age="39" />
+    
+    <bean id="singerTwo" class="chapter4.SingerWithInterface" p:age="72" />
+    
+    <bean id="singerThree" class="chapter4.SingerWithInterface" 
+          p:name="John Butler" />
+    
+    <bean id="destructiveBean" class="chapter4.DestructiveBeanWithInterface" 
+          destroy-method="destroy" p:filePath=
+"#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
+    
+    <bean id="johnMayer" class="chapter4.NamedSinger" />
+    
+<!--    <bean id="shaDigest" class="chapter4.MessageDigestFactoryBean" 
+          p:algorithmName="SHA1" />
+    
+    <bean id="defaultDigest" class="chapter4.MessageDigestFactoryBean" />-->
+    
+    <bean id="shaDigestFactory" class="chapter4.MessageDigestFactory" 
+          p:algorithmName="SHA1" />
+    
+    <bean id="defaultDigestFactory" class="chapter4.MessageDigestFactory" />
+
+    <bean id="shaDigest" factory-bean="shaDigestFactory" 
+          factory-method="createInstance" />
+    
+    <bean id="defaultDigest" factory-bean="defaultDigestFactory"
+          factory-method="createInstance" />
+        
+    <bean id="digester" class="chapter4.MessageDigester" 
+          p:digest1-ref="shaDigest" p:digest2-ref="defaultDigest" />
+    
+    <bean id="messageSource" 
+        class="org.springframework.context.support.ResourceBundleMessageSource"
+        p:basenames-ref="basenames" />
+    
+    <util:list id="basenames">
+        <value>buttons</value>
+        <value>labels</value>
+    </util:list>
+    
+    <bean id="publisher" class="chapter4.Publisher" />
+    
+    <bean id="messageEventListener" class="chapter4.MessageEventListener" />
+    
+    <context:property-placeholder location="classpath:application.properties" />
+    
+    <bean id="appProperty" class="chapter4.AppProperty" 
+          p:applicationHome="${application.home}" p:userHome="${user.home}" />
+    
+</beans>
