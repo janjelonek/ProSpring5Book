@@ -24,6 +24,8 @@ Without this configuration present, some functionality in the IDE may be limited
             <config-file>src/main/resources/spring/app-context-xml-01.xml</config-file>
             <config-file>src/main/resources/spring/app-context-xml-02.xml</config-file>
             <config-file>src/main/resources/spring/app-context-xml4.xml</config-file>
+            <config-file>src/main/resources/spring/drivermanager-cfg-01.xml</config-file>
+            <config-file>src/main/resources/spring/drivermanager-cfg-02.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

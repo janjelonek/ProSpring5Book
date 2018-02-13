@@ -12,7 +12,7 @@
         <version>2.0.0.M7</version>
     </parent>-->
     
-<!--    <pluginRepositories>
+    <pluginRepositories>
         <pluginRepository>
             <id>repository.spring.release</id>
             <name>Spring GA Repository</name>
@@ -26,7 +26,7 @@
             <name>Spring Milestone Repository</name>
             <url>https://repo.spring.io/milestone</url>
         </repository>
-    </repositories>-->
+    </repositories>
     
     <build>
         <plugins>
@@ -67,12 +67,22 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.0.0.RELEASE</version>
+            <version>5.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.0.RELEASE</version>
+            <version>5.0.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.0.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
